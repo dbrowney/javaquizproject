@@ -1,11 +1,17 @@
 # javaquizproject
 COP 2006 Java Integration Project
+Author: Donald Browney
+
+This is a quiz about Java programming language which can be used to help study for certification
+
+Coding help provided by COP 2006 lessons, W3Schools.com, and Oracle Java lessons unless otherwise
+noted
 
 SBLs
 
 Sprint / Milestone 1
 
-Add your name as a comment at top of every file
+Add your name as a comment at top of every file.
 Add a description of the program as a comment at top
 Add a list and description of Java built-in data types within the user interface or in comments
 Add a greeting / introduction to the user
