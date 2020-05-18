@@ -59,7 +59,6 @@ public class Main {
     }
     double totalPoints = numCorrect * pointsPerCorrectAnswer;
     System.out.println("Total Points: " + totalPoints);
-    System.out.println("Thank you!");
 
   }
 
