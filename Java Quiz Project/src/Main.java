@@ -27,7 +27,7 @@ public class Main {
     boolean correctAnswer1 = true;
     boolean correctAnswer2 = true;
     int numCorrect = 0; // numCorrect is a variable which is a location in memory
-    final double pointsPerCorrectAnswer = 14.28571; // pointsPerCorrectAnswer is a final variable
+    final double POINTS_PER_CORRECT_ANSWER = 14.28571; // pointsPerCorrectAnswer is a final variable
                                                     // which means it's value is constant and cannot
                                                     // be changed
 
@@ -57,7 +57,7 @@ public class Main {
     } else {
       System.out.println("Incorrect\n");
     }
-    double totalPoints = numCorrect * pointsPerCorrectAnswer;
+    double totalPoints = numCorrect * POINTS_PER_CORRECT_ANSWER;
     System.out.println("Total Points: " + totalPoints);
 
   }
