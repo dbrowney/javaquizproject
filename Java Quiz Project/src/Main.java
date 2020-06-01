@@ -25,18 +25,18 @@ public class Main {
   public static void main(String[] args) {
     // VARIABLES
     Random randomDifficulty = new Random();
-    String[] easyQuestions = {"JDK stands for Java Development Kit. (Enter TRUE or FALSE)",
+    String[] easyQuestions = {"\nJDK stands for Java Development Kit. (Enter TRUE or FALSE)",
         "A variable is a location in memeory. (Enter TRUE or FALSE)",
         "How many bits are in a byte?\na: 2\nb: 4\nc: 6\nd: 8"};
     String[] mediumQuestions = {
-        "In object oriented programming, an object comprises of properties and behaviors where "
+        "\nIn object oriented programming, an object comprises of properties and behaviors where "
             + "properties represented as fields of the object and behavior is represented as "
             + "method. (Enter TRUE or FALSE)",
         "Which of the following language is called a procedural language?\na: Java\nb: C\nc: Java "
             + "C\nd: C++",
         "A character preceded by backslash is called an escape sequence. (Enter TRUE or FALSE)"};
     String[] hardQuestions = {
-        "The Scanner class accepts input in which form?\na: Callables\nb: Future\nc: Tokens\nd: "
+        "\nThe Scanner class accepts input in which form?\na: Callables\nb: Future\nc: Tokens\nd: "
             + "Integer",
         "The classes of the Java class library are organized into packages. (Enter TRUE or FALSE)",
         "In the AND (&&) test, if the first expression on the left hand side is false, then there "
@@ -44,15 +44,17 @@ public class Main {
     String[] easyAnswers = {"true", "true", "d"};
     String[] mediumAnswers = {"true", "b", "true"};
     String[] hardAnswers = {"c", "true", "true"};
-    // Scope means a variable is only accessible in the part of the program in which it was defined
     int numCorrect = 0; // numCorrect is a variable which is a location in memory
-    final double POINTS_PER_CORRECT_ANSWER = 14.28571; // POINTS_PER_CORRECT_ANSWER is a final
+    final double POINTS_PER_CORRECT_ANSWER = 10.11111; // POINTS_PER_CORRECT_ANSWER is a final
                                                        // variable which means it's value is
                                                        // constant and cannot be changed
     boolean restartQuiz = true;
-    int difficultyLevel;
+    String difficultyLevel;
     double totalPoints;
     String userInput;
+    int autoDifficulty;
+    double questionPoints = 0;
+    double bonusPoints;
 
     // INTRO
     System.out.println("Hello and welcome to JAVA QUIZ 1.0 - INITIAL SUCCESS OR TOTAL FAILURE");
@@ -62,45 +64,60 @@ public class Main {
 
     // QUIZ
     do {
-      System.out
-          .println("To get started, please tell me the difficulty level you would like to try.\n");
+      System.out.println("To get started, please tell me the difficulty level you would like to "
+          + "try by entering the corresponding number.\n");
       System.out.println("1: Easy");
       System.out.println("2: Medium");
       System.out.println("3: Hard");
-      difficultyLevel = scan.nextInt();
-      scan.nextLine();
+      difficultyLevel = scan.nextLine();
       switch (difficultyLevel) {
-        case 1:
+        case "1":
           numCorrect = askQuestions(easyQuestions, easyAnswers);
+          // the value of numCorrect is a method call with the arguments in ()
           break;
-        case 2:
+        case "2":
           numCorrect = askQuestions(mediumQuestions, mediumAnswers);
           break;
-        case 3:
+        case "3":
           numCorrect = askQuestions(hardQuestions, hardAnswers);
           break;
         default:
-          System.out.println("random");
+          autoDifficulty = randomDifficulty.nextInt(3) + 1;
+          System.out
+              .println("That is not a valid choice. Difficulty randomly set to: " + autoDifficulty);
+          if (autoDifficulty == 1) {
+            numCorrect = askQuestions(easyQuestions, easyAnswers);
+          } else if (autoDifficulty == 2) {
+            numCorrect = askQuestions(mediumQuestions, mediumAnswers);
+          } else {
+            numCorrect = askQuestions(hardQuestions, hardAnswers);
+          }
       }
 
       // QUIZ SCORE
-      totalPoints = numCorrect * POINTS_PER_CORRECT_ANSWER;
+      while (questionPoints == 0) {
+        for (int score = 0; score <= numCorrect; score++) {
+          questionPoints = score * (POINTS_PER_CORRECT_ANSWER - 0.11111);
+        }
+      }
+      System.out.println(questionPoints);
+      bonusPoints = (questionPoints/2) % 2;
+      System.out.println(bonusPoints);
+      totalPoints = questionPoints * 3 + bonusPoints / 0.1;
       System.out.printf("%s%f", "Total Points: ", totalPoints);
 
       // RESTART QUIZ
       System.out.println("\nWould you like to take the quiz again? (Enter true or false)");
       userInput = scan.nextLine();
-      if (userInput.equalsIgnoreCase("true")) {
-        restartQuiz = true;
-      } else {
-        restartQuiz = false;
-      }
+      restartQuiz = userInput.equalsIgnoreCase("true") ? true : false;
     } while (restartQuiz);
     System.out.println("Thank you for taking my quiz and Good Luck on getting your certification!");
   }
 
   public static int askQuestions(String[] questions, String[] answers) {
-    int counter = 0;
+    // above is a method header with the parameters in the ()
+    int counter = 0; // Scope means a variable is only accessible in the part of the program in
+                     // which it was defined
     int numCorrect = 0;
     while (counter <= questions.length - 1) {
       System.out.println(questions[counter]);
