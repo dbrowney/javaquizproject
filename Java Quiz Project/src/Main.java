@@ -55,6 +55,7 @@ public class Main {
     int autoDifficulty;
     double questionPoints = 0;
     double bonusPoints;
+    char digit = '2';
 
     // INTRO
     System.out.println("Hello and welcome to JAVA QUIZ 1.0 - INITIAL SUCCESS OR TOTAL FAILURE");
@@ -96,14 +97,22 @@ public class Main {
 
       // QUIZ SCORE
       while (questionPoints == 0) {
+        // == evaluates condition as a boolean to see if it's true or false
         for (int score = 0; score <= numCorrect; score++) {
           questionPoints = score * (POINTS_PER_CORRECT_ANSWER - 0.11111);
         }
       }
-      System.out.println(questionPoints);
-      bonusPoints = (questionPoints/2) % 2;
-      System.out.println(bonusPoints);
-      totalPoints = questionPoints * 3 + bonusPoints / 0.1;
+      // the continue statement breaks 1 interation of the loop if a condition is met and then
+      // continues on to the next interation
+      // System.out.println(questionPoints); Used for testing purposes
+      bonusPoints = (questionPoints) % 2;
+      bonusPoints--;
+      // System.out.println(bonusPoints); Used for testing purposes
+      totalPoints = questionPoints * 3 + Math.pow(bonusPoints, (int) digit) / 0.1;
+      // the char variable "digit" was cast (converted) into an integer variable
+      // operator precedence starts with postfix, unary, multiplicative, additive, shift (<<, >>,
+      // >>>), relational, equality, bitwise AND (&), bitwise exclusive OR (^), bitwise inclusive OR
+      // (|), logical AND (&&), logical OR (||), ternary, assignment
       System.out.printf("%s%f", "Total Points: ", totalPoints);
 
       // RESTART QUIZ
