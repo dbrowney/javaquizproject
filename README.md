@@ -18,63 +18,63 @@ Sprint / Milestone 1
 
 - Add a list and description of Java built-in data types within the user interface or in comments // Lines 8 - 16
 
-- Add a greeting / introduction to the user // Lines 34 - 36
+- Add a greeting / introduction to the user // Lines 60 - 63
 
-- Use a boolean variable with an appropriate name  (singular noun, lowerCamelCase) // Lines 27 + 28
+- Use a boolean variable with an appropriate name  (singular noun, lowerCamelCase) // Line 51
 
-- Use an int variable with an appropriate name (singular noun, lowerCamelCase) // Line 29
+- Use an int variable with an appropriate name (singular noun, lowerCamelCase) // Lines 47, 55, 119, 121
 
-- Use an double variable with an appropriate name (singular noun, lowerCamelCase) // Line 30
+- Use an double variable with an appropriate name (singular noun, lowerCamelCase) // Lines 53, 56, 57
 
-- Use a String object with an appropriate name (singular noun, lowerCamelCase) // Lines 24 + 25
+- Use a String object with an appropriate name (singular noun, lowerCamelCase) // Lines 52, 54, 124
 
-- Define (in English) the term "variable" as it relates to computer programming in a comment or the user interface // Line 25
+- Define (in English) the term "variable" as it relates to computer programming in a comment or the user interface // Line 47
 
-- Define (in English) the term "scope" as it relates to computer programming in a comment or the user interface // Line 26
+- Define (in English) the term "scope" as it relates to computer programming in a comment or the user interface // Lines 119 - 120
 
-- Use final with a variable and describe what it means in a comment // Lines 30 - 32
+- Use final with a variable and describe what it means in a comment // Lines 48 - 50
 
-- Use casting and describe what it means in a comment (optional for 1, required for 2)
+- Use casting and describe what it means in a comment (optional for 1, required for 2) // ?
 
-- Format strings using escape sequences (optional for 1, required for 2)
+- Format strings using escape sequences (optional for 1, required for 2) // Lines 28, 30, 32, 35, 36, 39, 63, 68, 107, 110, 126, 129
 
 Sprint / Milestone 2
 
-- Create a method with arguments and return values
+- Create a method with arguments and return values // Lines 117 - 133
 
-- Identify a method call and argument in comments
+- Identify a method call and argument in comments // Lines 76
 
-- Identify a header and parameter in comments
+- Identify a header and parameter in comments // Line 118
 
-- Use the Random class
+- Use the Random class // Lines 19, 27, 85
 
-- Use the Math class
+- Use the Math class // ?
 
-- Create if/else constructs
+- Create if/else constructs // Lines 88 - 94, 125 - 130
 
-- Create ternary constructs
+- Create ternary constructs // Line 112
 
-- Use a switch statement
+- Use a switch statement // Lines 73 - 95
 
-- Compare two String objects by using the compareTo and equals methods and make a comment describing how == works with objects
+- Compare two String objects by using the compareTo and equals methods and make a comment describing how == works with objects // Lines 88, 90, 98
 
-- Use +, -, *, /, %, ++, --, +=
+- Use +, -, *, /, %, ++, --, += // Lines 85, 99, 100, 104, 106, 122, 127, 131
 
-- Use relational operators
+- Use relational operators // Lines 88, 90, 98, 99, 122
 
-- Use conditional operators
+- Use conditional operators // Line 112
 
-- Describe operator precedence as a comment
+- Describe operator precedence as a comment // Line
 
-- Create and use while loops
+- Create and use while loops // Lines 98 - 102, 122 - 132
 
-- Create and use for loops
+- Create and use for loops // Lines 99 - 101
 
-- Create and use do/while loops
+- Create and use do/while loops // Lines 66 - 113
 
-- Use break in a loop with a comment describing what it does
+- Use break in a loop with a comment describing what it does // Lines 77, 80, 83
 
-- Use continue in a loop with a comment describing what it does
+- Use continue in a loop with a comment describing what it does // ?
 
 Sprint / Milestone 3
 
