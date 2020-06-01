@@ -19,19 +19,19 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Main {
+  static Scanner scan = new Scanner(System.in); // used to gather user input to questions; not sure
+                                                // if it's supposed to be closed out
 
   public static void main(String[] args) {
     // VARIABLES
-    Scanner scan = new Scanner(System.in); // used to gather user input to questions. not sure if
-    // I'm supposed to close 'scan' out
     Random randomDifficulty = new Random();
     String[] easyQuestions = {"JDK stands for Java Development Kit. (Enter TRUE or FALSE)",
         "A variable is a location in memeory. (Enter TRUE or FALSE)",
         "How many bits are in a byte?\na: 2\nb: 4\nc: 6\nd: 8"};
     String[] mediumQuestions = {
         "In object oriented programming, an object comprises of properties and behaviors where "
-            + "properties represented as fields of the object and behavior is represented as method. "
-            + "(Enter TRUE or FALSE)",
+            + "properties represented as fields of the object and behavior is represented as "
+            + "method. (Enter TRUE or FALSE)",
         "Which of the following language is called a procedural language?\na: Java\nb: C\nc: Java "
             + "C\nd: C++",
         "A character preceded by backslash is called an escape sequence. (Enter TRUE or FALSE)"};
@@ -51,18 +51,17 @@ public class Main {
                                                        // constant and cannot be changed
     boolean restartQuiz = true;
     int difficultyLevel;
-    int counter;
     double totalPoints;
     String userInput;
 
     // INTRO
     System.out.println("Hello and welcome to JAVA QUIZ 1.0 - INITIAL SUCCESS OR TOTAL FAILURE");
-    System.out.println(
-        "This quiz is intended to sharpen your skills and bring you 1 step closer to certification.\n");
+    System.out
+        .println("This quiz is intended to sharpen your skills and bring you 1 step closer to "
+            + "certification.\n");
 
     // QUIZ
     do {
-      counter = 0;
       System.out
           .println("To get started, please tell me the difficulty level you would like to try.\n");
       System.out.println("1: Easy");
@@ -72,43 +71,13 @@ public class Main {
       scan.nextLine();
       switch (difficultyLevel) {
         case 1:
-          while (counter <= easyQuestions.length - 1) {
-            System.out.println(easyQuestions[counter]);
-            String userAnswer = scan.nextLine();
-            if (userAnswer.equalsIgnoreCase(easyAnswers[counter])) {
-              System.out.println("Correct\n");
-              numCorrect += 1;
-            } else {
-              System.out.println("Incorrect\n");
-            }
-            counter += 1;
-          }
+          numCorrect = askQuestions(easyQuestions, easyAnswers);
           break;
         case 2:
-          while (counter <= mediumQuestions.length - 1) {
-            System.out.println(mediumQuestions[counter]);
-            String userAnswer = scan.nextLine();
-            if (userAnswer.equalsIgnoreCase(mediumAnswers[counter])) {
-              System.out.println("Correct\n");
-              numCorrect += 1;
-            } else {
-              System.out.println("Incorrect\n");
-            }
-            counter += 1;
-          }
+          numCorrect = askQuestions(mediumQuestions, mediumAnswers);
           break;
         case 3:
-          while (counter <= hardQuestions.length - 1) {
-            System.out.println(hardQuestions[counter]);
-            String userAnswer = scan.nextLine();
-            if (userAnswer.equalsIgnoreCase(hardAnswers[counter])) {
-              System.out.println("Correct\n");
-              numCorrect += 1;
-            } else {
-              System.out.println("Incorrect\n");
-            }
-            counter += 1;
-          }
+          numCorrect = askQuestions(hardQuestions, hardAnswers);
           break;
         default:
           System.out.println("random");
@@ -126,7 +95,24 @@ public class Main {
       } else {
         restartQuiz = false;
       }
-    } while (restartQuiz == true);
+    } while (restartQuiz);
     System.out.println("Thank you for taking my quiz and Good Luck on getting your certification!");
+  }
+
+  public static int askQuestions(String[] questions, String[] answers) {
+    int counter = 0;
+    int numCorrect = 0;
+    while (counter <= questions.length - 1) {
+      System.out.println(questions[counter]);
+      String userAnswer = scan.nextLine();
+      if (userAnswer.equalsIgnoreCase(answers[counter])) {
+        System.out.println("Correct\n");
+        numCorrect += 1;
+      } else {
+        System.out.println("Incorrect\n");
+      }
+      counter += 1;
+    }
+    return numCorrect;
   }
 }
