@@ -87,6 +87,7 @@ public class Main {
           System.out
               .println("That is not a valid choice. Difficulty randomly set to: " + autoDifficulty);
           if (autoDifficulty == 1) {
+            // == evaluates condition as a boolean to see if it's true or false
             numCorrect = askQuestions(easyQuestions, easyAnswers);
           } else if (autoDifficulty == 2) {
             numCorrect = askQuestions(mediumQuestions, mediumAnswers);
@@ -96,11 +97,8 @@ public class Main {
       }
 
       // QUIZ SCORE
-      while (questionPoints == 0) {
-        // == evaluates condition as a boolean to see if it's true or false
-        for (int score = 0; score <= numCorrect; score++) {
-          questionPoints = score * (POINTS_PER_CORRECT_ANSWER - 0.11111);
-        }
+      for (int score = 0; score <= 3; score++) {
+        questionPoints = numCorrect * (POINTS_PER_CORRECT_ANSWER - 0.11111);
       }
       // the continue statement breaks 1 interation of the loop if a condition is met and then
       // continues on to the next interation
