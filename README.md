@@ -56,7 +56,7 @@ Sprint / Milestone 2
 
 - Use a switch statement // Lines 74 - 96
 
-- Compare two String objects by using the compareTo and equals methods and make a comment describing how == works with objects // Lines 89, 91, 99, 121, 134
+- Compare two String objects by using the compareTo and equals methods and make a comment describing how == works with objects // Lines 89, 90, 92, 119, 132
 
 - Use +, -, *, /, %, ++, --, += // Lines 86, 101, 102, 108, 109, 111, 131, 136, 140
 
@@ -66,7 +66,7 @@ Sprint / Milestone 2
 
 - Describe operator precedence as a comment // Lines 113 - 115
 
-- Create and use while loops // Lines 99 - 104, 131 - 141
+- Create and use while loops // Lines 129 - 139
 
 - Create and use for loops // Lines 101 - 103
 
