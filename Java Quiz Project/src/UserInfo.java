@@ -1,3 +1,6 @@
+// Author: Donald Browney
+// This class is used to find the smallest number and total sum of a set of user entered integers.
+
 import java.util.ArrayList;
 
 public class UserInfo {
