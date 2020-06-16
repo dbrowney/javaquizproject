@@ -15,6 +15,14 @@
 // char: a single character or letter enclosed by single quotes, 16 bit
 // boolean: only possible values are true and false, 1 bit of info
 
+// Inheritance is the ability of a subclass (a.k.a. derived or child) to use the fields and methods
+// of the superclass (a.k.a. base or parent)
+
+// Some advantages of inheritance are the ability to reuse the same code for similar objects which
+// cut down on program code length and help keep coding organized
+
+// Polymorphism happens when a parent class reference is used to refer to a child class object
+
 import java.util.Scanner;
 import java.util.Random;
 
@@ -56,17 +64,64 @@ public class Main {
     double questionPoints = 0;
     double bonusPoints;
     char digit = '2';
+    String userName;
+    int firstLuckyNum = 0;
+    int secondLuckyNum = 0;
+    int thirdLuckyNum = 0;
+    int tryAgain = 1;
+    String[][] monthDay =
+        {{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"},
+            {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}};
+    int month = 0;
+    int day = 0;
 
     // INTRO
     System.out.println("Hello and welcome to JAVA QUIZ 1.0 - INITIAL SUCCESS OR TOTAL FAILURE");
     System.out
         .println("This quiz is intended to sharpen your skills and bring you 1 step closer to "
             + "certification.\n");
+    System.out.println("First, please answer a few questions.\n");
+    UserInfo name = new UserInfo();
+    userName = scan.nextLine();
+    name.setName(userName);
+    while (tryAgain == 1) {
+      System.out.println("\nNow give me 3 whole numbers between 2,147,483,647 and -2,147,483,648 "
+          + "that you feel are lucky:");
+      try {
+        firstLuckyNum = scan.nextInt();
+        secondLuckyNum = scan.nextInt();
+        thirdLuckyNum = scan.nextInt();
+        tryAgain = 2;
+      } catch (Exception e) {
+        System.out.println("You have not entered a valid number between 2,147,483,647 and "
+            + "-2,147,483,648. Please try again!");
+        scan.nextLine();
+      }
+    }
+    UserInfo luckyNums = new UserInfo(firstLuckyNum, secondLuckyNum, thirdLuckyNum);
+    System.out.println(luckyNums.getSmallestNumber());
+    System.out.println(luckyNums.getTotalSum());
+    System.out.println(luckyNums.getSmallestNumber(firstLuckyNum, secondLuckyNum));
+    while (tryAgain == 2) {
+      System.out.println("\nAnd last but not least, please quickly pick a number between 0 - 11:");
+      try {
+        month = scan.nextInt();
+        System.out.println("Lastly, please quickly pick a number between 0 - 6:");
+        day = scan.nextInt();
+        tryAgain = 1;
+      } catch (Exception e) {
+        System.out.println("You have not entered a valid number. Please try again!");
+        scan.nextLine();
+      }
+    }
+    System.out.println("\nYour luckiest month and day are " + monthDay[0][month] + " and "
+        + monthDay[1][day] + ".");
+    scan.nextLine();
 
     // QUIZ
     do {
-      System.out.println("To get started, please tell me the difficulty level you would like to "
-          + "try by entering the corresponding number.\n");
+      System.out.println("\nNow please tell me the difficulty level you would like to try by "
+          + "entering the corresponding number.\n");
       System.out.println("1: Easy");
       System.out.println("2: Medium");
       System.out.println("3: Hard");
@@ -100,8 +155,8 @@ public class Main {
       for (int score = 0; score <= 3; score++) {
         questionPoints = numCorrect * (POINTS_PER_CORRECT_ANSWER - 0.11111);
       }
-      // the continue statement breaks 1 interation of the loop if a condition is met and then
-      // continues on to the next interation
+      // the continue statement breaks 1 iteration of the loop if a condition is met and then
+      // continues on to the next iteration
       // System.out.println(questionPoints); Used for testing purposes
       bonusPoints = (questionPoints) % 2;
       bonusPoints--;
