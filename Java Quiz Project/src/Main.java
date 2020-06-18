@@ -1,4 +1,5 @@
 // COP 2006 Integration Project - Summer A 2020
+// Java Quiz Project
 // Author: Donald Browney
 /*
  * This is a quiz about Java programming language which can be used to help study for certification.
@@ -23,16 +24,101 @@
 
 // Polymorphism happens when a parent class reference is used to refer to a child class object
 
-import java.util.Scanner;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
-  static Scanner scan = new Scanner(System.in); // used to gather user input to questions; not sure
-                                                // if it's supposed to be closed out
+  static Scanner scan = new Scanner(System.in); // used to gather user input to questions
 
+  /**
+   * This is a driver class which run the entire Java Quiz Project program.
+   * 
+   * @author Donald Browney
+   * @param args built-in with a main method
+   */
   public static void main(String[] args) {
     // VARIABLES
     Random randomDifficulty = new Random();
+    final double POINTS_PER_CORRECT_ANSWER = 10.11111; // This is a final variable which means it's
+    // value is constant and cannot be changed
+
+    // INTRO
+    int firstLuckyNum = 0;
+    int secondLuckyNum = 0;
+    int thirdLuckyNum = 0;
+    System.out.println("Hello and welcome to JAVA QUIZ 1.0 - INITIAL SUCCESS OR TOTAL FAILURE");
+    System.out
+        .println("This quiz is intended to sharpen your skills and bring you 1 step closer to "
+            + "certification.\n");
+    System.out.println("First, please answer a few questions.\n");
+    UserInfo name = new UserInfo();
+    String userName;
+    userName = scan.nextLine();
+    name.setName(userName);
+    int tryAgain = 1;
+    while (tryAgain == 1) {
+      System.out.println("\nNow give me 3 whole numbers between 2,147,483,647 and -2,147,483,648 "
+          + "that you feel are lucky:");
+      try {
+        firstLuckyNum = scan.nextInt();
+        secondLuckyNum = scan.nextInt();
+        thirdLuckyNum = scan.nextInt();
+        tryAgain = 2;
+      } catch (Exception e) {
+        System.out.println("You have not entered a valid number between 2,147,483,647 and "
+            + "-2,147,483,648. Please try again!");
+        scan.nextLine();
+      }
+    }
+    name.setNumbers(firstLuckyNum, secondLuckyNum, thirdLuckyNum);
+    System.out.println(name.getSmallestNumber());
+    System.out.println(name.getTotalSum());
+    int firstRandomNum = 0;
+    int secondRandomNum = 0;
+    while (tryAgain == 2) {
+      System.out.println("\nNow please type 2 whole random numbers between 2,147,483,647 and "
+          + "-2,147,483,648:");
+      try {
+        firstRandomNum = scan.nextInt();
+        secondRandomNum = scan.nextInt();
+        tryAgain = 1;
+      } catch (Exception e) {
+        System.out.println("You have not entered a valid number between 2,147,483,647 and "
+            + "-2,147,483,648. Please try again!");
+        scan.nextLine();
+      }
+    }
+    name.setNumbers(firstRandomNum, secondRandomNum);
+    System.out.println("The largest of these 2 numbers is " + name.getLargestNumber() + ".");
+    String[][] monthDay =
+        {{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"},
+            {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}};
+    int month = 0;
+    int day = 0;
+    while (tryAgain == 1) {
+      try {
+        do {
+          System.out.println(
+              "\nAnd last but not least, please quickly pick a number between 0 - " + "11:");
+          month = scan.nextInt();
+          scan.nextLine();
+        } while (month < 0 || month > 11);
+        do {
+          System.out.println("Lastly, please quickly pick a number between 0 - 6:");
+          day = scan.nextInt();
+        } while (day < 0 || day > 6);
+        tryAgain = 2;
+      } catch (Exception e) {
+        System.out.println("You have not entered a valid number. Please try again!");
+        scan.nextLine();
+      }
+    }
+    System.out.println("\nYour luckiest month is " + monthDay[0][month] + " and your luckiest day "
+        + "is " + monthDay[1][day] + ".");
+    scan.nextLine();
+
+    // QUIZ
+    boolean restartQuiz = true;
     String[] easyQuestions = {"\nJDK stands for Java Development Kit. (Enter TRUE or FALSE)",
         "A variable is a location in memeory. (Enter TRUE or FALSE)",
         "How many bits are in a byte?\na: 2\nb: 4\nc: 6\nd: 8"};
@@ -53,72 +139,8 @@ public class Main {
     String[] mediumAnswers = {"true", "b", "true"};
     String[] hardAnswers = {"c", "true", "true"};
     int numCorrect = 0; // numCorrect is a variable which is a location in memory
-    final double POINTS_PER_CORRECT_ANSWER = 10.11111; // POINTS_PER_CORRECT_ANSWER is a final
-                                                       // variable which means it's value is
-                                                       // constant and cannot be changed
-    boolean restartQuiz = true;
     String difficultyLevel;
-    double totalPoints;
-    String userInput;
     int autoDifficulty;
-    double questionPoints = 0;
-    double bonusPoints;
-    char digit = '2';
-    String userName;
-    int firstLuckyNum = 0;
-    int secondLuckyNum = 0;
-    int thirdLuckyNum = 0;
-    int tryAgain = 1;
-    String[][] monthDay =
-        {{"Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"},
-            {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"}};
-    int month = 0;
-    int day = 0;
-
-    // INTRO
-    System.out.println("Hello and welcome to JAVA QUIZ 1.0 - INITIAL SUCCESS OR TOTAL FAILURE");
-    System.out
-        .println("This quiz is intended to sharpen your skills and bring you 1 step closer to "
-            + "certification.\n");
-    System.out.println("First, please answer a few questions.\n");
-    UserInfo name = new UserInfo();
-    userName = scan.nextLine();
-    name.setName(userName);
-    while (tryAgain == 1) {
-      System.out.println("\nNow give me 3 whole numbers between 2,147,483,647 and -2,147,483,648 "
-          + "that you feel are lucky:");
-      try {
-        firstLuckyNum = scan.nextInt();
-        secondLuckyNum = scan.nextInt();
-        thirdLuckyNum = scan.nextInt();
-        tryAgain = 2;
-      } catch (Exception e) {
-        System.out.println("You have not entered a valid number between 2,147,483,647 and "
-            + "-2,147,483,648. Please try again!");
-        scan.nextLine();
-      }
-    }
-    UserInfo luckyNums = new UserInfo(firstLuckyNum, secondLuckyNum, thirdLuckyNum);
-    System.out.println(luckyNums.getSmallestNumber());
-    System.out.println(luckyNums.getTotalSum());
-    System.out.println(luckyNums.getSmallestNumber(firstLuckyNum, secondLuckyNum));
-    while (tryAgain == 2) {
-      System.out.println("\nAnd last but not least, please quickly pick a number between 0 - 11:");
-      try {
-        month = scan.nextInt();
-        System.out.println("Lastly, please quickly pick a number between 0 - 6:");
-        day = scan.nextInt();
-        tryAgain = 1;
-      } catch (Exception e) {
-        System.out.println("You have not entered a valid number. Please try again!");
-        scan.nextLine();
-      }
-    }
-    System.out.println("\nYour luckiest month and day are " + monthDay[0][month] + " and "
-        + monthDay[1][day] + ".");
-    scan.nextLine();
-
-    // QUIZ
     do {
       System.out.println("\nNow please tell me the difficulty level you would like to try by "
           + "entering the corresponding number.\n");
@@ -152,6 +174,8 @@ public class Main {
       }
 
       // QUIZ SCORE
+      double questionPoints = 0;
+      double bonusPoints;
       for (int score = 0; score <= 3; score++) {
         questionPoints = numCorrect * (POINTS_PER_CORRECT_ANSWER - 0.11111);
       }
@@ -161,6 +185,8 @@ public class Main {
       bonusPoints = (questionPoints) % 2;
       bonusPoints--;
       // System.out.println(bonusPoints); Used for testing purposes
+      char digit = '2';
+      double totalPoints;
       totalPoints = questionPoints * 3 + Math.pow(bonusPoints, (int) digit) / 0.1;
       // the char variable "digit" was cast (converted) into an integer variable
       // operator precedence starts with postfix, unary, multiplicative, additive, shift (<<, >>,
@@ -169,6 +195,7 @@ public class Main {
       System.out.printf("%s%f", "Total Points: ", totalPoints);
 
       // RESTART QUIZ
+      String userInput;
       System.out.println("\nWould you like to take the quiz again? (Enter true or false)");
       userInput = scan.nextLine();
       restartQuiz = userInput.equalsIgnoreCase("true") ? true : false;
@@ -176,10 +203,19 @@ public class Main {
     System.out.println("Thank you for taking my quiz and Good Luck on getting your certification!");
   }
 
+  /**
+   * This is a static method within the Main class that asks the user questions based on the
+   * difficulty level defined by the user.
+   * 
+   * @param questions references a String array which contains questions
+   * @param answers references a String array which contains the correct answers to the questions
+   *        contained in the parameter 'questions'
+   * @return the number of questions the user answered that matched the correct answers
+   */
   public static int askQuestions(String[] questions, String[] answers) {
     // above is a method header with the parameters in the ()
     int counter = 0; // Scope means a variable is only accessible in the part of the program in
-                     // which it was defined
+    // which it was defined
     int numCorrect = 0;
     while (counter <= questions.length - 1) {
       System.out.println(questions[counter]);
